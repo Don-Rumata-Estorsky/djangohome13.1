@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>all in</title>
+</head>
+<body>
+    
+
+<h1>все ваши записи, прошу</h1>
+<h2>к вашему шалашу</h2>
+
+<ul>
+{% for zapis in zapisi %}
+<li>
+    {{ zapis.soderjanie }}
+   
+    <form action="{% url 'delete_zapis' zapis.id %}" method="post" >
+    {% csrf_token %}
+    <button type="submit" >yдалить</button>
+    </form>
+</li>
+{% endfor %}
+</ul>
+<a href="{% url 'write_zapis' %}">eshe sdelat?</a>
+
+</body>
+</html>
